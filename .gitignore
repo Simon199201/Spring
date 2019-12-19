@@ -1,0 +1,5 @@
+# Default ignored files
+/.idea/workspace.xml
+.idea/
+itheima_spring_ioc/target
+itheima_spring_ioc/itheima_spring_ioc.iml
