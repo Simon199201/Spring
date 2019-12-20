@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan
+@ComponentScan("com.itheima")
 @Import(DataSourceConfiguration.class)
 public class SpringConfiguration {
 
