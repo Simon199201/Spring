@@ -18,5 +18,7 @@ public class UserDaoDemo {
         DataSource dataSource = (DataSource) app.getBean("dataSource");
         System.out.println(dataSource.getConnection());
 
+        ApplicationContext app1 = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Object userDao1 = app1.getBean("userDao1");
     }
 }
