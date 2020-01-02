@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,11 +18,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * ModelAndView
  */
 @Controller
+@RequestMapping("/user")
 public class UserController {
     @RequestMapping("/quick23")
     @ResponseBody
@@ -83,6 +87,12 @@ public class UserController {
     @ResponseBody
     private void quick16(@RequestParam(value = "name", required = false, defaultValue = "itcast") String username) throws IOException {
         System.out.println("user is " + username);
+    }
+
+    @RequestMapping("/quick15")
+    @ResponseBody
+    private void quick15(@RequestBody List<User> userList) throws IOException {
+        System.out.println("userList is " + userList);
     }
 
     @RequestMapping("/quick13")
@@ -168,7 +178,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping("/quick")
+    @RequestMapping(value = "/quick")
     private String quick() {
         System.out.println("save ...");
         return "success";
