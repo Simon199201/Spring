@@ -4,21 +4,87 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itheima.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * ModelAndView
  */
 @Controller
 public class UserController {
+    @RequestMapping("/quick23")
+    @ResponseBody
+    private void quick23(String username, MultipartFile[] uploadFile) throws IOException {
+        System.out.println(username);
+        for (MultipartFile multipartFile : uploadFile) {
+            String originalFilename = multipartFile.getOriginalFilename();
+            File file = new File("/Users/simon/Downloads/" + originalFilename);
+            multipartFile.transferTo(file);
+        }
+    }
+
+    @RequestMapping("/quick22")
+    @ResponseBody
+    private void quick22(String username, MultipartFile uploadFile, MultipartFile uploadFile2) throws IOException {
+        System.out.println(username);
+        String originalFilename = uploadFile.getOriginalFilename();
+        File file = new File("/Users/simon/Downloads/" + originalFilename);
+        uploadFile.transferTo(file);
+
+        String originalFilename2 = uploadFile2.getOriginalFilename();
+        File file2 = new File("/Users/simon/Downloads/" + originalFilename2);
+        uploadFile2.transferTo(file2);
+    }
+
+    @RequestMapping("/quick21")
+    @ResponseBody
+    private void quick21(@CookieValue(value = "JSESSIONID", required = false) String jsessionId) throws IOException {
+        System.out.println(jsessionId);
+    }
+
+    @RequestMapping("/quick20")
+    @ResponseBody
+    private void quick20(@RequestHeader(value = "User-Agent", required = false) String user_agent) throws IOException {
+        System.out.println(user_agent);
+    }
+
+    @RequestMapping("/quick19")
+    @ResponseBody
+    private void quick19(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws IOException {
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+    }
+
+    @RequestMapping("/quick18")
+    @ResponseBody
+    private void quick18(Date date) throws IOException {
+        System.out.println(date);
+    }
+
+    //Restful风格
+    @RequestMapping("/quick17/{username}")
+    @ResponseBody
+    private void quick17(@PathVariable(value = "username") String username) throws IOException {
+        System.out.println("user is " + username);
+    }
+
+    @RequestMapping("/quick16")
+    @ResponseBody
+    private void quick16(@RequestParam(value = "name", required = false, defaultValue = "itcast") String username) throws IOException {
+        System.out.println("user is " + username);
+    }
+
     @RequestMapping("/quick13")
     @ResponseBody
     private void quick13(String[] strs) throws IOException {
@@ -33,7 +99,7 @@ public class UserController {
 
     @RequestMapping("/quick11")
     @ResponseBody
-    private void quick11(String username,int age) throws IOException {
+    private void quick11(String username, int age) throws IOException {
         System.out.println("username is " + username);
         System.out.println("age is " + age);
 

@@ -7,4 +7,37 @@
        http://www.springframework.org/schema/context/spring-context-4.1.xsd">
     <context:property-placeholder location="classpath:jdbc.properties"/>
     <context:component-scan base-package="com.itheima"/>
+    <bean id="userDao2" name="userDao" class="com.itheima.dao.impl.UserDaoImpl" scope="prototype"/>
+    <bean id="userDao3" name="userDao" class="com.itheima.dao.impl.UserDaoImpl" scope="prototype"/>
+    <bean id="factoryBean" class="com.itheima.factory.DynamicFactoryBean"/>
+    <bean id="userDao4" factory-bean="factoryBean" factory-method="createUserDao"></bean>
+    <bean id="userDao5" class="com.itheima.factory.StaticFactoryBean" factory-method="createUserDao"></bean>
+    <bean id="userService2" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="list">
+            <list>
+                <value>111</value>
+                <value>111</value>
+                <value>111</value>
+            </list>
+        </property>
+        <property name="list1">
+            <list>
+                <bean class="com.itheima.dao.impl.UserDaoImpl"></bean>
+                <bean class="com.itheima.dao.impl.UserDaoImpl"></bean>
+                <ref bean="userDao2"/>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="1"></entry>
+                <entry key="2" value="2"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="11">11</prop>
+                <prop key="22">2</prop>
+            </props>
+        </property>
+    </bean>
 </beans>

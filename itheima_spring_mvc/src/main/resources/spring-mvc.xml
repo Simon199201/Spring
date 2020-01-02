@@ -9,12 +9,23 @@
     <context:component-scan base-package="com.itheima.control">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionService2"/>
 
     <beans>
         <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="prefix" value="/jsp/"/>
             <property name="suffix" value=".jsp"/>
+        </bean>
+        <bean id="conversionService2" class="org.springframework.context.support.ConversionServiceFactoryBean">
+            <property name="converters">
+                <list>
+                    <bean class="com.itheima.converter.DateConverter"/>
+                </list>
+            </property>
+        </bean>
+        <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+            <property name="defaultEncoding" value="UTF-8"/>
+            <property name="maxUploadSize" value="500000"/>
         </bean>
     </beans>
 </beans>
