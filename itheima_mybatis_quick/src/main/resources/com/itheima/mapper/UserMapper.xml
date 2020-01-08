@@ -5,4 +5,13 @@
     <select id="findAll" resultType="com.itheima.domain.User">
         select * from user
     </select>
+
+    <!--修改操作-->
+    <update id="update" parameterType="com.itheima.domain.User">
+        update user set username=#{username},password=#{password} where id = #{id}
+    </update>
+    <!--删除操作-->
+    <update id="delete" parameterType="java.lang.Integer">
+        delete from user where id=#{id}
+    </update>
 </mapper>

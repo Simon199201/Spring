@@ -25,8 +25,7 @@ public class MyBatisTest {
         //获得session回话对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
         //执行操作  参数：namespace+id
-        sqlSession.delete("userMapper.delete",8);
-
+        sqlSession.delete("userMapper.delete", 7);
         //mybatis执行更新操作  提交事务
         sqlSession.commit();
 
