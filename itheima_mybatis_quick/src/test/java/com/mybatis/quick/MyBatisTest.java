@@ -65,7 +65,7 @@ public class MyBatisTest {
 
         //模拟user对象
         User user = new User();
-        user.setUsername("xxx");
+        user.setUsername("xxxx");
         user.setPassword("abc");
 
         //获得核心配置文件
