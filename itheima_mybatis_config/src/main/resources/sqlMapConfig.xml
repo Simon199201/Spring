@@ -4,8 +4,11 @@
     <properties resource="jdbc.properties"/>
     <!--别名-->
     <typeAliases>
-        <typeAlias type="com.itheima.domain.User" alias="user"/>
+        <typeAlias type="com.itheima.domain.User1" alias="user"/>
     </typeAliases>
+    <typeHandlers>
+        <typeHandler handler="com.itheima.handler.DateHandler"/>
+    </typeHandlers>
 
     <environments default="development">
         <environment id="development">

@@ -1,10 +1,21 @@
 package com.itheima.domain;
 
-public class User {
+import java.util.Date;
+
+public class User1 {
     private int id;
     private String username;
     private String password;
 
+    private Date birthday;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
     public int getId() {
         return id;
     }
@@ -31,10 +42,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "User1{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", birthday=" + birthday +
                 '}';
     }
 }

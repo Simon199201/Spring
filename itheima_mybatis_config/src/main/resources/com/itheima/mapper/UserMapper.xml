@@ -27,4 +27,7 @@
             </foreach>
         </where>
     </select>
+    <insert id="insert" parameterType="user" >
+        insert into user values(#{id},#{username},#{password},#{birthday})
+    </insert>
 </mapper>

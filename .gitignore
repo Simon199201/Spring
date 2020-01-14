@@ -18,3 +18,5 @@ itheima_spring_exception/itheima_spring_exception.iml
 out/
 itheima_mybatis_quick/target
 itheima_mybatis_quick/itheima_mybatis_quick.iml
+itheima_mybatis_config/target
+itheima_mybatis_config/itheima_mybatis_config.iml
