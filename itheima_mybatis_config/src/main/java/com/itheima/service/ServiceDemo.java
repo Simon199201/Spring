@@ -1,5 +1,7 @@
 package com.itheima.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.itheima.dao.UserMapper;
 import com.itheima.domain.User1;
 import org.apache.ibatis.io.Resources;
@@ -36,15 +38,24 @@ public class ServiceDemo {
 //        System.out.println(result);
 
         //typehandlers
-        User1 user = new User1();
-        user.setBirthday(new Date());
-        user.setUsername("simon");
-        user.setPassword("123");
-        mapper.insert(user);
+//        User1 user = new User1();
+//        user.setBirthday(new Date());
+//        user.setUsername("simon");
+//        user.setPassword("123");
+//        mapper.insert(user);
+//
+//        List<Integer> list = new ArrayList<Integer>();
+//        list.add(8);
+//        List<User1> user1List = mapper.findByIds(list);
+//        System.out.println(user1List);
 
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(8);
-        List<User1> user1List = mapper.findByIds(list);
-        System.out.println(user1List);
+
+        //分页
+        PageHelper.startPage(1, 3);
+        List<User1> all = mapper.findAll();
+        System.out.println(all);
+        PageInfo<User1> pageInfo = new PageInfo<User1>(all);
+        int pageNum = pageInfo.getPageNum();
+        System.out.println("当前页数："+pageNum);
     }
 }
