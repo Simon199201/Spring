@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheima.dao.UserMapper">
+    <resultMap id="userAndOrder" type="user">
+        <id property="id" column="uid"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="birthday" column="birthday"/>
+        <collection property="orderList" ofType="order">
+            <id property="id" column="oid"/>
+            <result property="ordertime" column="ordertime"/>
+            <result property="total" column="total"/>
+        </collection>
+    </resultMap>
+    <select id="findAllUser" resultMap="userAndOrder">
+        select *,o.id oid from user u,orders o where u.id = o.uid
+    </select>
+</mapper>
